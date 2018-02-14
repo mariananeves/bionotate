@@ -1,0 +1,15 @@
+;; Object www/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "www/"
+  :tables (list 
+   (semanticdb-table "index.html"
+    :major-mode 'html-mode
+    :tags '(("BioNotate: project for annotating BioMedical Literature" section nil nil [622 1205]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1205 1260]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1260 1318]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1318 1380]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1380 1439]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1439 1497]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1497 1559]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1559 1626]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1626 1685]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1685 1747]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [1747 2710]) ("annotationInit( 'http://localhost:8080/#*', 'anonymous', 'anonymous', null );" section nil nil [2710 3281]) ("Snippet" section (:members (("Snippet" section (:members (("GENE" section nil nil [5755 7542]) ("CBI@HMS" section nil nil [7542 7545]))) nil [4126 4130]))) nil [3281 3287]))
+    :file "index.html"
+    :pointmax 7626
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

@@ -1,0 +1,218 @@
+h1 {
+	font-family: Georgia, serif;
+	text-align: center;
+	font-size: x-large;
+}
+
+h2 {
+	font-family: Georgia, serif;
+	font-size: large;
+	text-align: center;
+}
+
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	/*margin: 1em 2em;*/
+}
+
+ul {
+	list-style-type: none;
+	display: block;
+	margin-top: 0em;
+	padding-left: 20px;
+	margin-bottom: 0em;
+}
+
+#debug {
+	margin-left: 12em;
+}
+
+.user_div {
+	font-size:small; 
+	padding-top:0.5em; 
+	padding-bottom:0.5em; 
+	padding-left:0.5em; 
+	padding-right:0.5em; 
+	background-color:#EEEEFF;
+}
+
+.explanation {
+	font-size:small;
+	font-variant: small-caps;
+
+}
+
+.articles{
+	position: relative ;
+	margin: 0;
+	padding: 0;
+}
+
+.hentry h3 {
+	margin: 1ex 0;
+}
+
+
+
+html > body .hentry {
+	position: relative;
+	padding: 0 ;
+	margin: 1em 0 ;
+	height: auto;
+	min-height: 3cm;
+}
+
+.entry-info {
+	position: relative;
+	padding: 0 ;
+	margin: 1em 0 ;
+	height: auto;
+	min-height:0.5cm;
+}
+
+.hentry .entry-content {
+	height: 100%;
+	width: 78% ;
+	font-size: medium;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border: 1pt solid Black;
+	padding: 0.5em ;
+	margin: 0;
+	clear: left;/*min-height: 3cm;*/
+
+}
+
+
+.hentry p {
+	margin: 1ex 0;
+}
+
+.hentry .entry-content li {
+	margin: 1ex 0;
+}
+
+.hentry .entry-content em.annotation[color='1']{
+	background: #7ad689;
+	font-style: normal;
+}
+
+.hentry .entry-content em.annotation[color='2']{
+	background: #ffe880;
+	font-style: normal;
+}
+.hentry .entry-content em.annotation[color='3']{
+	background: #7ac689;
+	font-style: normal;
+}
+.hentry .entry-content em.annotation[color='4']{
+	background: #ecd470;
+	font-style: normal;
+}
+
+.hentry .entry-content em.annotation{
+	text-decoration: underline;
+}
+
+
+
+.hentry .notes {
+	background: #eee;
+	position: absolute;
+	height: 100%;
+	width: 20%;
+	top: 0;
+	right: 0 ;
+	margin: 0;
+	padding: 0;
+	clear: left;
+	overflow:auto;
+}
+
+.hentry .notes ol {
+	list-style-type: none;
+	margin: 0 0 0 1em ;
+	padding: 2px .5ex ;
+}
+
+.hentry .notes li {
+	font-family: sans-serif;
+	font-size: 80%;	
+	margin: 0 ;
+	margin-bottom: 1ex;
+	padding: 0;
+	min-height: 1.2em;
+	width: 100%;
+	cursor: pointer;
+}
+
+.hentry .notes li.dummy {
+	height: 1px;
+	cursor: default;
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+}
+
+.hentry .notes li button {
+	border: none;
+	background: none;
+	float: right;
+	display: block;
+	font-size: inherit;
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.hentry .notes li button:hover {
+	font-weight: bold;
+}
+
+.hentry .notes li textarea {
+	font-size: inherit;
+	font-family: sans-serif;
+	border: none;
+	background: white;
+	margin: 0;
+	width: 95%;
+}
+
+.hentry .notes li.hover,
+.hentry .entry-content em.annotation.hover {
+	color: red;
+	outline: red 1px solid;
+}
+
+.hentry .smart-copy {
+	display: none;
+}
+
+
+.entry-info .EOI {
+	float: left;
+	width: 40% ;
+	height: auto;
+	min-height: 3cm;
+
+	
+}
+
+.entry-info .EOI ol {
+	list-style-type: none;
+}
+
+
+.entry-info .EOI_buttons {
+	float: left;
+	width: 60%;
+	height: auto;
+	min-height: 3cm;
+
+}
+
+.entry-info .EOI_buttons ol {
+	list-style-type: none;
+}
+

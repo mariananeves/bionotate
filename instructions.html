@@ -1,0 +1,169 @@
+<html>
+<head>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+<style type="text/css">
+em.gene {
+	background: #7ad689;
+}
+em.interaction {
+	background: #ffe880;
+}
+</style>
+
+</head>
+<BODY>
+<p><h1>Instructions to annotators.</h1></p>
+
+<P>The Department of Computer Science and A.I. at the <a href="http://decsai.ugr.es">University of Granada</a> together with the <A HREF="https://cbmi.med.harvard.edu/home/index.php">Center
+for Biomedical Informatics</A> (CBI) at Harvard Medical School (HMS) are developing advance natural
+language processing (NLP) techniques to extract facts from biomedical literature. Particularly, <B>our research concerns the automatic identification of gene-gene interactions and gene-disease interactions. </B>
+</P>
+<P>To help us in this effort, you will be shown a small chunk of text
+(snippet) and two biomedical entities of interest (gene-gene or gene-disease). You will also find that one mention of each of the entities of interest is already highlighted in the text of the snippet, for example: 
+</P>
+<P> 
+Entities of interest: autism (DISEASE) and HRAS (GENE)<br>
+Snippet: <I> We report a positive association between <em class="gene">autism</em> and two <em class="gene">HRAS</em> markers.</I>
+</P>
+<P>For a given snippet, we need you to: 
+<ol>
+<li>Indicate Yes/No whether the text implies that there is a direct interaction between the provided genes/diseases.</li>
+<li>Highlight the minimal and most important phrase in the text (if any) that supports this Yes/No decision. This text will be marked up as <em class="interaction">INTERACTION</em>.</li>
+<li>Locate and highlight the mentions of the provided genes/diseases which participate in the interaction phrase (if any). These mentions will be marked up as <em class="gene">GENE/DISEASE</em>.</li>
+</ol>
+</P>
+
+<p>The resulting set of available tags for the annotation is the following:
+<ul><li><em class="gene">GENE</em>: for gene and protein occurrences (e.g. RELN, GRM8, WNT2).</li>
+<li><em class="gene">DISEASE</em>: for disease occurrences (e.g. autistic disorder, AutD, ASD).</li>
+<li><em class="interaction">INTERACTION</em>: minimal, most relevant phrase that supports the Yes/No
+  decision (e.g. "binds to", "phosphorylates", "does not regulate").</li>
+</ul>
+</p>
+
+<p>A detailed explanation of these points follows: </p>
+<ol>
+<li><p>Indicate Yes/No whether the text implies that there is a direct interaction between the provided genes/diseases.</p>
+<p>We say there is a "relationship" or "interaction" between two entities if there exists some text in the snippet that explicitly supports the relationship.</p>
+<p>For example, the text "<i>Gene A inhibits Gene B</i>" <b>supports</b> a relationship between <i>Gene A</i> and <i>Gene B</i>. </p>
+<p>The text "<i>We found no evidence that Gene A is associated to Gene B</i>" <b>does not support</b> the existence of an interaction between <i>Gene A</i> and <i>Gene B</i>.</p>
+<p>Also, we are only interested in <b>direct</b> relationships between pairs of entities, which means that the following sentences: 
+<ul>
+<li><i>Gene X regulates both A and B.</i></li>
+<li><i>A and B play a role in autism.</i></li>
+<li><i>A regulates the expression of X. X is associated to B.</i></li>
+</ul>
+do <b>not</b> imply a <b>direct</b> interaction between <i>A</i> and <i>B</i>.</p>
+</li>
+<li><p>Highlight the minimal and most important phrase in the text (if any) that supports this Yes/No decision. </p>
+<p>Please note that we ask for the <b>minimal</b> phrase, for example in the snippet: <br>
+<i>We found no evidence that Gene A is associated to Gene B</i><br>
+highlighting a long text as support for the answer, like: <i>found no evidence that Gene A is associated to Gene B</i>, should be <b>avoided</b>. Instead, short significant support is desirable, like: <i>no evidence</i>. </p>
+<p>Also, in case there are several different phrases that support the Yes/No answer, we ask you to highlight the <b>most important</b> one. For example, in the snippet: <br><i>The KH domains of FXR1 and FMR1 are almost identical and the two proteins have similar RNA binding proteins in vitro [...] These findings suggest a biological role for FXR1 that is related to that of FMR1. </i><br>
+The most important phrase that support the relationship between <i>FXR1</i> and <i>FMR1</i> is <i>is related to</i>. </p>
+<P>
+Please note that the two genes/diseases of interest can just co-occur in the provided text with no explicit relation being reported between them. In this case, the answer is NO (because the two genes/diseases are not directly related according to the text) and <B>nothing needs to be highlighted as INTERACTION</B>, like in this example:
+</P>
+<P>
+Entities of interest: D2 (GENE) and D1 (GENE)<br>
+Snippet: <I>While stimulation of the D2 receptor increased branching and extension of neurites (43), stimulation of the D1 receptor reduced neurite outgrowth (44), suggesting that hormones and neurotransmitters may be capable of controlling the development of specific types of neurones.</I>
+</P>
+</li>
+<li><p>Locate and highlight the one mention of each of the entities of interest
+which, assuming that first all anaphora were replaced by antecedents, if
+they were changed to a mention of another entity it would result in a
+phrase which no longer conveyed the same relation. For example, consider
+the following snippet:<p>
+Entities of interest: Protein A (GENE) and Protein B (GENE)<br>
+Snippet: <i>Protein A is found in tissue T. Protein A interacts
+with protein B in the presence of catalyst C to produce D.</i></p>
+<p>changing the first mention of Protein A to protein C would not alter the relation
+being expressed, while changing the second mention of Protein A to protein C would. Therefore,
+the second mention of Protein A should be highlighted, together with the
+mention of protein B. The resultant snippet would be:</p>
+<p>
+Entities of interest: Protein A (GENE) and Protein B (GENE)<br>
+Snippet: <i>Protein A is found in tissue T. <em class="gene">Protein A</em> <em class="interaction">interacts
+with</em> <em class="gene">protein B</em> in the presence of catalyst C to produce D.</i><br>
+</p>
+<p>Also, in case a pronoun refers to the entity of interest and links it to the
+interaction phrase, the pronoun and not the entity mention should be
+marked up with the corresponding label (gene or disease). For example
+consider the following snippet:</p>
+<p>
+Entities of interest: RELN (GENE) and autism (DISEASE)<br>
+Snippet: <i>Gene RELN was studied in various disorders. It turned out to be causing autism.</i></p>
+<p><i>It</i> should be marked-up as a gene since it refers to the gene of interest
+<i>RELN</i> and changing this pronoun to a mention of another entity would
+alter the relation being expressed between this gene and the other entity of
+interest: <i>autism</i>. The resultant annotated snippet would be: </p>
+<p>
+Entities of interest: RELN (GENE) and autism (DISEASE)<br>
+Snippet: <i>Gene RELN was studied in various disorders. <em class="gene">It</em> turned out to <em class="interaction">be causing</em> <em class="gene">autism</em>.</i><br>
+</p>
+
+<p>Please note that one mention of each of the entities of interest will be highlighted for you in advance (typically, the two mentions occurring nearest each other). Only one occurrence of every gene/disease should be highlighted in each snippet, so you should check whether the highlighted mentions comply with these guidelines, and change the annotations otherwise. You can erase previous annotations with BioNotate by locating their associated entry in the right margin and removing them. </p>
+</li>
+</ol>
+</P>
+
+<p><h2>Examples.</h2></p>
+<P>A few examples already annotated are provided below:</P>
+
+<P>
+Entities of interest: autism (DISEASE) and HRAS (GENE)<br>
+Snippet: <I>We report a <em class="interaction">positive association between</em> <em class="gene">autism</em> and two <em class="gene">HRAS</em> markers.</I><br>
+Does this snippet support a direct interaction between the highlighted entities? YES</P>
+
+<P>
+Entities of interest: GABA (GENE) and autistic disorder (DISEASE)<br>
+Snippet: <I>These findings <em class="interaction">support a role</em> for genetic variants within the <em class="gene">GABA</em> receptor gene complex in 15q11-13 in <em class="gene">autistic disorder</em>.</I><br>
+Does this snippet support a direct interaction between the highlighted entities? YES
+</P>
+<P>
+Entities of interest: APOE (GENE) and autism (DISEASE)<br>
+Snippet: <I>Three promoter, one intronic, and one 3' UTR single nucleotide polymorphisms (SNPs) in the APOE gene (-491a/t, -427c/t, -219g/t, 113c/g, and 5361c/t) as well as the APOE functional polymorphism (E2, E3, E4) were examined and <em class="interaction">failed to reveal significant evidence</em> that <em class="gene">autism</em> is associated with <em class="gene">APOE</em>.</I><br>
+Does this snippet support a direct interaction between the highlighted entities? NO
+</P>
+<P>
+Entities of interest: D2 (GENE) and D1 (GENE)<br>
+Snippet: <I>While stimulation of the <em class="gene">D2</em> receptor increased branching and extension of neurites (43), stimulation of the <em class="gene">D1</em> receptor reduced neurite outgrowth (44), suggesting that hormones and neurotransmitters may be capable of controlling the development of specific types of neurones.</I>
+<br>
+Does this snippet support a direct interaction between the highlighted entities? NO
+</P>
+<P>
+Entities of interest: very low density lipoprotein receptor (GENE) and apolipoprotein E (GENE)<br>
+Snippet: <I> No association between the <em class="gene">very low density lipoprotein receptor</em> gene and
+late-onset Alzheimer's disease <em class="interaction">nor interaction with</em> the <em class="gene">apolipoprotein E</em> gene
+in population-based and clinic samples 
+</I>
+<br>
+Does this snippet support a direct interaction between the highlighted entities? NO
+</P>
+<P>
+Entities of interest: FXR1 (GENE) and FMRP (GENE)<br>
+Snippet: <I>  Recently , two proteins homologous to FMRP were discovered : FXR1 and
+FXR2 . <em class="gene">These novel proteins</em> <em class="interaction">interact with</em> <em class="gene">FMRP</em> and with each other.
+</I>
+<br>
+Does this snippet support a direct interaction between the highlighted entities? YES
+</P>
+
+
+<P>
+Entities of interest: very low density lipoprotein receptor (GENE) and apolipoprotein E (GENE)<br>
+Snippet: <I> The biological role of the very low density lipoprotein receptor ( VLDL-R )
+in humans is not yet elucidated . <em class="gene">This cellular receptor</em> <em class="interaction">binds</em> <em class="gene">apolipoprotein E</em>
+( apoE)-containing lipoparticles and is mainly expressed in peripheral tissues.
+</I>
+<br>
+Does this snippet support a direct interaction between the highlighted entities? YES
+</P>
+<div style="text-align:center">
+   <hr width="100%">
+   <p>BioNotate is a joint project of the Department of Computer Science and Artificial Intelligence , University of Granada (http://decsai.ugr.es/) and the Center for Biomedical Informatics, Harvard Medical School (cbmi.med.harvard.edu).</p>
+   <p>Copyright &copy; 2008</p>
+</div>
+</BODY>
+</HTML>

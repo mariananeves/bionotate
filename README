@@ -1,0 +1,151 @@
+
+BioNotate is a text annotation tool written in Javascript that allows collaborative annotation of relationships between 
+biomedical entities in scientific texts. All its functionality is integrated with a web application so the users don't 
+require special browsers or other client software. 
+
+BioNotate and its advantages over traditional text annotation efforts are described in the paper: 
+
+Cano C., Monaghan T., Blanco A., Wall D.P. and Peshkin L. (2009)
+"Collaborative text-annotation resource for disease-centered relation extraction from biomedical text"
+Journal of Biomedical Informatics, Volume 42, Issue 5, October 2009, Pages 967-977 . 
+
+http://bionotate.sourceforge.net
+
+In this document you can find the instructions to install the BioNotate annotation tool, customize the annotation schema and run your own annotation effort on your server. A description of the XML format for the corpus is also provided. 
+
+
+1.- GUIDELINES FOR THE SETUP OF A LOCAL BIONOTATE SERVER
+
+
+
+ REQUIREMENTS
+
+	 You will need the following to set up the BioNotate tool on your web server:
+
+	    * Run an Apache server.
+	    * Allow perl/CGI scripts to run.
+
+
+ INSTALLATION
+
+	 Installation instructions are only available for Linux at this time. We will release instructions for Windows promptly.
+
+	   1. Download the BioNotate source code from http://sourceforge.net/projects/bionotate .
+
+	   2. Please realize that in the source code you will find two empty directories:
+	          * "snippets" : to store and organize un-annotated snippets in XML-formatted files.
+	          * "annotations" : to store and organize annotations in XML-formatted files.
+
+	   3. Insert the snippets that you want to annotate in the folder "snippets". 
+			Each snippet must be an XML file with an unique name and a certain format (see below). 
+			The files with snippets must be organized into subdirectories (e.g. snippets/Autism/*.xml). 
+			This way you can organize your snippets according to your criteria. Currently, BioNotate does not support 
+			multiple nested directories (e.g. snippets/Autism/set1/*.xml is not supported). 
+			The same subdirectories you create in the folder "snippets" must also be created in the folder "annotations". 
+			The XML files for the annotations are created by the system as the snippets are annotated so you do not need to create them.
+	
+	   4. Set the XML files in the snippets folder to have read permissions on your web server and 
+		  folders in the "annotations" folder to have write permissions.
+	
+			chmod go+rx snippets/*
+	
+			chmod go+rw annotations/*
+	
+	   5. Edit the corpus index file (dirList/listSnippets.txt) so it contains a list with all the snippets available in the folder "snippets" for annotation. 	
+		  Set this file to have read and write permissions on your web server. 
+
+	 		chmod go+rw dirList/listSnippets.txt
+
+			Please see related documentation about how to create a well formated corpus index file: 
+			http://sourceforge.net/docman/display_doc.php?docid=130619&group_id=239207
+
+	   6. Set the file dirList/listAgreements.txt to have read and write permissions on your web server. The CGI scripts will modify this file 
+			so it contains the annotations that agree for each snippet. 
+
+			chmod go+rw dirList/listAgreements.txt
+
+	   7. To use the tool, open in your browser: http://yourserver/bionotate-location/index.html
+
+
+
+
+2.- HOW TO CUSTOMIZE THE ANNOTATION SCHEMA AND FUNCTION FOR AGREEMENT. 
+
+ - ANNOTATION SCHEMA. 
+
+	The annotation schema is defined in schema.xml. Users can edit this file for implementing their own annotation schema. 
+	Current version of BioNotate supports the definition of "entities" and "questions". 
+	"Entities" refer to types of named entities of interest and the relationships between them 
+	(i.e., the "Entities" refer to the set of labels available in the annotation interface). 
+	"Questions" define the questions to be asked to the annotator for each snippet, and the available answers. 
+
+	See the file schema.xml provided with this distribution of BioNotate for an example of use. 
+
+	Each "entity" is defined by the fields: 
+	 - name: unique id for the entity type 
+	 - caption: name for the entity type to be shown to the user in the annotation interface
+	 - nOccurrences: number of mentions of the type of entity to be maked-up by the annotator in each snippet. 
+		Set it to 0 for unlimited number of entities (i.e. for tasks such as "Highlight all gene mentions" or "Highlight all the mentions of gene A"). 
+	 - color: determines the color of the highlighting as provided in styles.css. Currently values '1', '2', '3' and '4' are supported. 
+		Simply add/change the corresponding entries in styles.css for adding/changing the colors of the highlighting. 
+	 - description: optional argument for describing the type of entity. 
+
+	Each "question" is defined by the fields: 
+	 - id: unique id for the question
+	 - text: text of the question (to be shown to the user in the annotation interface)
+	 - answers: list of possible answers to the question. Each answer is defined by a value (unique text identifying the selected answer) 
+		and some text (to be shown to the user in the annotation interface). 
+
+ - FUNCTION FOR AGREEMENT AMONG ANNOTATORS. 
+
+	The user can also customize the function that determines whether a set of annotations for a snippet agree or not (and to what extend). 
+	This function is coded in the Perl functions: "meetMinimumAgreement", "check2AnnotationsAgreement" and "whoAgree" in the file save.cgi. 
+	Simply edit this file changing the functions as needed. 
+
+ 
+3.- SNIPPET AND ANNOTATION FORMAT GUIDE 
+
+	The snippets and the annotations are stored in BioNotate in the form of XML files, one file per snippet and one file per annotation 
+	(here we refer as "annotation" to the set of annotations performed by one user in one particular snippet).
+
+	FORMAT FOR SNIPPETS AND ANNOTATIONS
+
+	Please see the file in the folder ./snippets/test/ for an example of un-annotated snippet; 
+	and the file in ./annotations/test/ for an example of annotated snippet.  
+
+	The description of the fields in XML format follows:
+
+		<snippetID>: snippet unique identifier. 
+		<source>: name of the source and unique identifier of the paper from which the snippet was extracted. 
+		<text>: plain text of the snippet.
+		<EoIs>: Entities of Interest for a snippet. Current version of BioNotate allows the user to provide certain entities which are of interest for each snippet, so the annotator has to focus on them to proceed with the annotation task. For example, we may be interested on two particular genes/proteins and ask whether these two are related according to the text in the snippet. These two genes/proteins should be provided so their information is shown above the text of the snippet. Particularly, we require the following information to be provided for each entity of interest: 
+			<id>: internal unique ID. 
+			<symbol>: entity symbol so it can be identified by the annotator. 
+			<type>: type of the entity. This string of text must correspond to the "name" of one of the entity types defined in schema.xml. 
+			<officialId>: official ID of the entity. The source providing the ID should be specified in the "type" attribute. 
+			
+		<annotations>: actual annotations. They can be either 1) automatically generated in advance for the annotator to correct them; or 2) directly generated by the human annotator. This implies that <annotations> labels may appear in (manually) un-annotated snippets. There are two types of "annotations": 
+			<question>: contains the answer provided by the user to each of the questions. The question and the answer are identified by their unique id and value, respectively, as provided in schema.xml. 
+			<entry>: annotation entry which corresponds to a continuous piece of highlighted text. The <entry> labels have the following nested labels:
+				<refId> [Optional] id of the associated Entity of Interest. We plan to incorporate some features in future versions of BioNotate so the annotator can associate a highlighted span of text to one of the provided entities of interest. 
+				<range> initial and ending positions of a span of text in the snippet. These positions are provided as "initialToken.initialChar endingToken.endingChar". Token counting starts in 1 from the beginning of the snippet (tokens are delimited by blanks). Char counting starts in 0 from the beginning of the token. "initialChar" is inclusive and "endingChar" is exclusive. 
+				<summary> highlighted text as it appears in the snippet.
+				<type> label assigned by the annotator. It corresponds to the "name" of one of the entity types defined in schema.xml
+		<user>: [only for annotated snippets] username of the annotator, or "anonymous" if the annotator did not log in. 
+
+
+
+
+ACKNOWLEDGEMENTS
+
+	This tool was inspired by Label-Me (http://labelme.csail.mit.edu/) the open annotation tool for images. 
+	The javascript software for highlighting chunks of text was implemented based on the open-source project Marginalia Web Annotation 
+	(http://www.geof.net/code/annotation/) by Geof Glass. 
+
+
+
+BioNotate is a joint project of the Department of Computer Science and Artificial Intelligence , University of Granada (http://decsai.ugr.es/) and the Center for Biomedical Informatics, Harvard Medical School (cbmi.med.harvard.edu).
+
+Copyright © 2008
+
+

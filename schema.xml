@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+
+<schema>
+
+<entities>
+  <entity>
+    <name>gene</name>
+	<caption>GENE</caption>
+	<nOccurrences>2</nOccurrences>
+	<color>1</color>
+	<description>continuous, minimal chunk of text identifying a gene or protein</description>
+  </entity>
+  <entity>
+	<name>interaction</name>
+	<caption>INTERACTION</caption>
+	<nOccurrences>1</nOccurrences>
+	<color>2</color>
+	<description>keywords that support the gene-disease relationship</description>
+  </entity>
+</entities>
+
+<questions>
+  <question>
+	<id>relationship</id>
+	<text>Does this snippet support a direct interaction between the provided entities?</text>
+	<answers>
+		<answer>
+			<value>positive</value>
+			<text>Yes, there is explicit positive evidence of interaction (please highlight support).</text>
+		</answer>
+		<answer>
+			<value>negative</value>
+			<text>No, there is explicit negative evidence of interaction (please highlight support).</text>
+		</answer>
+		<answer>
+			<value>none</value>
+			<text>No, the two entities just co-occur.</text>
+		</answer>
+	</answers>
+  </question>
+</questions>
+
+</schema>

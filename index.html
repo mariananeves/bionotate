@@ -1,0 +1,77 @@
+<!--<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+
+    
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+	<title>BioNotate: project for annotating BioMedical Literature</title>
+	<!-- This stylesheet includes styling for the annotation margin.  The code makes heavy
+	uses of CSS, so a stylesheet provides extensive controls over the look and feel of
+	the interface (e.g. add graphics or icons, change the appearance of the annotations in the margin). -->
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
+	<!-- These all need to be included . -->
+	<script type="text/javascript" src="log.js"></script>
+	<script type="text/javascript" src="config.js"></script>
+	<script type="text/javascript" src="html-model.js"></script>
+	<script type="text/javascript" src="domutil.js"></script>
+	<script type="text/javascript" src="ranges.js"></script>
+	<script type="text/javascript" src="post-micro.js"></script>
+	<script type="text/javascript" src="annotation-service.js"></script>
+	<script type="text/javascript" src="lang/en.js"></script>
+	<script type="text/javascript" src="annotation.js"></script>
+	<script type="text/javascript" src="smartcopy.js"></script>
+	<script type="text/javascript" src="user.js"></script>
+	<script type="text/javascript" src="process-dynamic-schema.js"></script>
+	<script type="text/javascript">
+		GetBrowserInfo();
+		var xhtmlNS = 'http://www.w3.org/1999/xhtml';
+		annotationInit('anonymous', null );
+	</script>
+	<script type="text/javascript" id="annotationTypes"></script>
+	
+	
+</head>
+
+<body onload="readAnnotationTypes();displayAnnotationButtons();displayAnnotationQuestions();showAllAnnotations()">
+
+	<!-- This is just used for debugging, don't worry about it: -->
+	<ul id="debug" style="display:none">
+		<li></li>
+	</ul>
+	<!-- USER ID -->
+	<div style="font-size:small;">
+		<div id="username_main_div" class="user_div"></div>
+		<script type="text/javascript">write_username();</script>
+	</div>
+
+	<h3>Snippet</h3>
+	<div class="articles">
+	</div>	
+
+	
+	
+	<div id="annotationButtons">
+	</div>
+	
+
+	<div id="annotationQuestions">
+	</div>
+	
+	<p>
+	<button onclick="saveAnnotation(true)" title="Click here to SAVE the annotation">SAVE ANNOTATION</button>
+	<button onclick="skipAnnotation(true)" title="Click here to SKIP the annotation">SKIP SNIPPET</button>
+	</p>
+	Please read the <a href="instructions.html" target="_blank">instructions</a> before annotating.<br>
+	For comments and suggestions, <a href="mailto:carloscano <at> users.sourceforge.net">email us</a>. <br>
+	<p>BioNotate is a joint project of the Department of Computer Science and Artificial Intelligence, <a href="http://decsai.ugr.es">University of Granada</a> <br>and the <a href="http://cbmi.med.harvard.edu">Center for Biomedical
+	Informatics</a>, Harvard Medical School.</p>
+	
+	<!--<p>Copyright &copy; 2008</p>-->
+	
+
+
+
+</body>
+</html>
+
