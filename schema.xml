@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+
+<schema>
+
+<entities>
+ 
+  <entity>
+  <name>animal experiment</name>
+	<caption>ANIMAL</caption>
+	<nOccurrences>1</nOccurrences>
+	<color>1</color>
+	<description>chunk of text that identifies an animal experiment</description>
+  </entity>
+  
+  <entity>
+	<name>alternative to animal experiment</name>
+	<caption>ALTERNATIVE</caption>
+	<nOccurrences>1</nOccurrences>
+	<color>2</color>
+	<description>chunk of text that identifies an alternative method to animal experiment</description>
+  </entity>
+
+</entities>
+
+<questions>
+  <question>
+	<id>relationship</id>
+	<text>Does this abstarct report an animal exepriment or an alternative method to the later?</text>
+	<answers>
+		<answer>
+			<value>positive</value>
+			<text>Yes, an animal experiment (please highlight support).</text>
+		</answer>
+		<answer>
+			<value>negative</value>
+			<text>No, an alternative method to animal experiment (please highlight support).</text>
+		</answer>
+		<answer>
+			<value>both</value>
+			<text>Both an animal exepriment and an alternative method to this (please highlight support).</text>
+		</answer>
+    <answer>
+			<value>none</value>
+			<text>None of them or undecided.</text>
+		</answer>
+	</answers>
+  </question>
+</questions>
+
+</schema>
