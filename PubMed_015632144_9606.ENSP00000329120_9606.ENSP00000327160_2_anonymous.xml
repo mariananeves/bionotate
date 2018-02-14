@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<link rel="self" type="text/html" href=""/>
+<snippetID>PubMed_015632144_9606.ENSP00000329120_9606.ENSP00000327160_2</snippetID>
+<source>
+<name>PubMed</name>
+<sourceId>015632144</sourceId>
+</source>
+<location>./annotations/test/PubMed_015632144_9606.ENSP00000329120_9606.ENSP00000327160_2.xml</location>
+<author>anonymous</author>
+<text>Disabled-1 ( Dab1 ) is an essential adaptor protein that functions in the Reelin signaling pathway and is required for the regulation of neuronal migration during embryonic development . Dab1 interacts with NPXY motifs in the cytoplasmic tails of the lipoprotein receptors ApoER2 and very low density lipoprotein receptor through an amino-terminal phosphotyrosine binding ( PTB ) domain (2).
+</text>
+<EoIs>
+<EoI>
+<id>1</id>
+<symbol>Dab1</symbol>
+<type>gene</type>
+<officialId type="Ensembl">ENSP00000329120</officialId>
+</EoI>
+<EoI>
+<id>2</id>
+<symbol>very low density lipoprotein receptor</symbol>
+<type>gene</type>
+<officialId type="Ensembl">ENSP00000327160</officialId>
+</EoI>
+</EoIs>
+<annotations>
+<question>
+<id>relationship</id>
+<answer>positive</answer>
+</question>
+<entry>
+<refId/>
+<range>30.0 30.4</range>
+<summary>Dab1</summary>
+<type>gene</type>
+</entry>
+<entry>
+<refId/>
+<range>31.0 32.4</range>
+<summary>interacts with</summary>
+<type>interaction</type>
+</entry>
+<entry>
+<refId/>
+<range>45.0 49.8</range>
+<summary>very low density lipoprotein receptor</summary>
+<type>gene</type>
+</entry>
+
+</annotations>
+</feed>
