@@ -25,21 +25,21 @@
 <questions>
   <question>
 	<id>relationship</id>
-	<text>Does this abstarct report an animal exepriment or an alternative method to the later?</text>
+	<text>Does this abstract report an animal experiment or an alternative method to the later?</text>
 	<answers>
 		<answer>
 			<value>positive</value>
-			<text>Yes, an animal experiment (please highlight support).</text>
+			<text>An animal experiment (please highlight support).</text>
 		</answer>
 		<answer>
 			<value>negative</value>
-			<text>No, an alternative method to animal experiment (please highlight support).</text>
+			<text>An alternative method to animal experiment (please highlight support).</text>
 		</answer>
 		<answer>
 			<value>both</value>
-			<text>Both an animal exepriment and an alternative method to this (please highlight support).</text>
+			<text>Both an animal exepriment and an alternative method (please highlight support).</text>
 		</answer>
-    <answer>
+    		<answer>
 			<value>none</value>
 			<text>None of them or undecided.</text>
 		</answer>
